@@ -4,12 +4,22 @@ from cvzone.HandTrackingModule import HandDetector
 from cvzone.ClassificationModule import Classifier
 import numpy as np
 import math
+import gdown
+from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
 
+# Download model from Google Drive
+file_id = "1WeSZoGTIvp1qkhuAxIiDmSQVIYoWIoXb"
+url = f"https://drive.google.com/uc?id={file_id}"
+model_path = "asl_model.h5"
+print("Downloading model...")
+gdown.download(url, model_path, quiet=False)
+print("Model downloaded.")
+
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=1)
-classifier = Classifier("asl_16feb.h5", "labels.txt")
+classifier = Classifier(model_path, "labels.txt")
 
 offset = 20
 imgSize = 300
