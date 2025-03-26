@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Gesture Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Hand Gesture Recognition</h1>
+        <p>Show your hand gestures to the camera, and the model will predict the letter.</p>
+        <div class="video-container">
+            <img id="videoFeed" src="{{ url_for('video_feed') }}" alt="Hand Gesture Recognition">
+        </div>
+        <p class="footer">Made with ❤️ using Flask & OpenCV</p>
+    </div>
+</body>
+</html>
